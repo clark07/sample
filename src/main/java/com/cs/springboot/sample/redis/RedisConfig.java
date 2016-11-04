@@ -27,17 +27,17 @@ public class RedisConfig extends CachingConfigurerSupport {
 
 	private final static Logger log = LoggerFactory.getLogger(RedisConfig.class);
 	
-/*	@Bean
+	@Bean
 	public JedisConnectionFactory redisConnectionFactory() {
 		JedisConnectionFactory redisConnectionFactory = new JedisConnectionFactory();
 		// Defaults
 		redisConnectionFactory.setHostName("192.168.1.166");
 		redisConnectionFactory.setPort(6379);
 		return redisConnectionFactory;
-	}*/
+	}
 
 
-	/*@Bean
+	@Bean
 	public KeyGenerator wiselyKeyGenerator() {
 		return new KeyGenerator() {
 			@Override
@@ -58,10 +58,15 @@ public class RedisConfig extends CachingConfigurerSupport {
 	@Bean
 	public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
 		StringRedisTemplate template = new StringRedisTemplate(factory);
-		Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
-		ObjectMapper om = new ObjectMapper(); om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-		om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL); jackson2JsonRedisSerializer.setObjectMapper(om);
-		template.setValueSerializer(jackson2JsonRedisSerializer); template.afterPropertiesSet(); return template;
-	}*/
+		Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(
+				Object.class);
+		ObjectMapper om = new ObjectMapper();
+		om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+		om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+		jackson2JsonRedisSerializer.setObjectMapper(om);
+		template.setValueSerializer(jackson2JsonRedisSerializer);
+		template.afterPropertiesSet();
+		return template;
+	}
 }
 
